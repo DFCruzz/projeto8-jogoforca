@@ -6,6 +6,7 @@ const ChuteSection = styled.section`
     height: 45px;
     align-items: center;
     justify-content: space-between;
+    margin: 0 auto;
 
     div {
         font-size: 20px;
@@ -29,6 +30,7 @@ const ChuteSection = styled.section`
         border-radius: 3px;
         color: #7AA7C7;
         font-size: 16px;
+        font-weight: 700;
         text-align: center
     }
 `
