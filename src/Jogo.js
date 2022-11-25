@@ -47,16 +47,16 @@ const WordContainer = styled.p`
     text-align: center
 `
 
-export default function RunGame() {
+export default function RunGame({palavra, forca}) {
     return (
         <GameContainer>
             <LeftContainer>
-                <img src="./assets/forca0.png"/>
+                <img src={forca}/>
             </LeftContainer>
             <RightContainer>
                 <StartButton>Escolher Palavra</StartButton>
                 <WordContainer>
-                    _ _ _ _ _ _ _ _
+                    {palavra}
                 </WordContainer>
             </RightContainer>
         </GameContainer>
