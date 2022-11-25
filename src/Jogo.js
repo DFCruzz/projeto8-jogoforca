@@ -37,6 +37,7 @@ const StartButton = styled.button`
    text-align: center;
    color: #FFFFFF;
    margin: 0 auto;
+   cursor: pointer;
 `
 
 const WordContainer = styled.p`
@@ -45,16 +46,17 @@ const WordContainer = styled.p`
     font-size: 50px;
     font-weight: 700;
     text-align: center
+    letter-spacing: 20px;
 `
 
-export default function RunGame({palavra, forca}) {
+export default function RunGame({palavra, forca, startGame}) {
     return (
         <GameContainer>
             <LeftContainer>
                 <img src={forca}/>
             </LeftContainer>
             <RightContainer>
-                <StartButton>Escolher Palavra</StartButton>
+                <StartButton onClick={startGame}>Escolher Palavra</StartButton>
                 <WordContainer>
                     {palavra}
                 </WordContainer>

@@ -22,13 +22,41 @@ export default function App() {
 
     const [disabledKey, setDisabledKey] = useState(true)
     const [disabledInput, setDisabledInput] = useState(true)
-    const [imgForca, setImgForca] = useState("./assets/forca0.png")
-    const [palavraForca, setPalavraForca] = useState("")
-    
+    const [gameImg, setGameImg] = useState("./assets/forca0.png")
+    const [gameWord, setGameWord] = useState([])
+
+
+    //Auxiliary Functions - Start
+    function upperCase(string) {
+        return string.toUpperCase()
+    }
+
+    function pickRandomString(arr) {
+        return arr[Math.floor(Math.random() * arr.length)]
+    }
+
+    function stringToArray(string) {
+        return [...string]
+    }
+
+    function printUnderlines(arr) {
+        arr.map(x => "_")
+    }
+    //Auxiliary Functions - End
+
+    function startGame() {
+        const randomWord = upperCase(pickRandomString(palavras))
+        const wordArr = stringToArray(randomWord)
+        console.log(wordArr)       
+        const blankArray = wordArr.map(x => "_")
+        setGameWord(blankArray.join(" "))
+        setDisabledInput(false)
+        setDisabledKey(false)
+    }
 
     return (
         <>
-            <RunGame palavra={palavraForca} forca={imgForca}/>
+            <RunGame startGame={startGame} palavra={gameWord} forca={gameImg}/>
             <LetterContainer>
                 {novoAlfabeto.map(a => <Letters disabled={disabledKey} key={a} letter={a} />)}
             </LetterContainer>
