@@ -55,8 +55,8 @@ const Jogo = ({
             </LeftContainer>
             <RightContainer>
                 <button data-test="choose-word" onClick={() => startGame()}>Escolher Palavra</button>
-                <p data-test="word" data-answer={gameWord} style={{ color: wordColor }}>
-                    {underlineWord}
+                <p data-test="word" data-answer={gameWord.join("")} style={{ color: wordColor }}>
+                    {underlineWord.join("")}
                 </p>
             </RightContainer>
         </GameContainer>
