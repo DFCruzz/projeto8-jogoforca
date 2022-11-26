@@ -12,6 +12,9 @@ const Letters = ({
     setUnderlineWord,
     errorCount,
     setErrorCount,
+    setGameImg,
+    setIsDisabled,
+    setWordColor,
 }) => {
 
     function checkRightOrWrong(e) {
@@ -20,8 +23,9 @@ const Letters = ({
 
         if(pickedWord.includes(e)) {
             pickedWord.map((a, index) => {
-                if(a.normalize("NFD").replace(/[^a-zA-Z\s]/g, "") === e) {
+                if(a.normalize('NFD').replace(/[\u0300-\u036f]/g, "") === e) {
                     fillBlankArray(a, index)
+                    endGame()
                 }
             })
         }
@@ -29,6 +33,7 @@ const Letters = ({
             let count = errorCount + 1
             setErrorCount(count)
             console.log(count)
+            endGame(count)
         }
     }
 
@@ -37,6 +42,38 @@ const Letters = ({
        blankPickedWord[index] = e
        setUnderlineWord(blankPickedWord)
 
+    }
+
+    function endGame(e) {
+        if(!underlineWord.includes("_")) {
+            setIsDisabled(true)
+            setWordColor("#27AE60")
+        }
+
+        else {
+            if(e === 1) {
+                setGameImg("./assets/forca1.png")
+            }
+            else if(e === 2) {
+                setGameImg("./assets/forca2.png")
+            }
+            else if(e === 3) {
+                setGameImg("./assets/forca3.png")
+            }
+            else if(e === 4) {
+                setGameImg("./assets/forca4.png")
+            }
+            else if(e === 5) {
+                setGameImg("./assets/forca5.png")
+            }
+            else if(e === 6) {
+                setGameImg("./assets/forca6.png")
+                console.log("Game Over Papito!")
+                setIsDisabled(true)
+                setWordColor("#FF0000")
+                setUnderlineWord(gameWord)
+            }
+        }
     }
 
     function pickLetter(event) {

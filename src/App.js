@@ -15,6 +15,7 @@ export default function App() {
     const [underlineWord, setUnderlineWord] = useState([])
     const [pickedLetters, setPickedLetters] = useState([])
     const [errorCount, setErrorCount] = useState(0)
+    const [wordColor, setWordColor] = useState("#000000")
 
 
     return (
@@ -28,6 +29,9 @@ export default function App() {
                 setGameWord={setGameWord}
                 setPickedLetters={setPickedLetters}
                 setErrorCount={setErrorCount}
+                setGameImg={setGameImg}
+                wordColor={wordColor}
+                setWordColor={setWordColor}
             />
             <Letters
                 newAlfabeto={newAlfabeto}
@@ -39,6 +43,9 @@ export default function App() {
                 underlineWord={underlineWord}
                 setErrorCount={setErrorCount}
                 errorCount={errorCount}
+                setGameImg={setGameImg}
+                setIsDisabled={setIsDisabled}
+                setWordColor={setWordColor}
             />
             <Chute disabled={isDisabled ? "disabled": null} />
         </>

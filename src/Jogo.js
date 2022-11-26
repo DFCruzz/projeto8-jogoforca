@@ -10,7 +10,9 @@ const Jogo = ({
     underlineWord,
     gameImg,
     setGameImg,
-    setPickedLetters
+    setPickedLetters,
+    wordColor,
+    setWordColor,
 }) => {
 
     //Auxiliary Functions - Start
@@ -41,6 +43,8 @@ const Jogo = ({
         setErrorCount(0)
         setIsDisabled(false)
         setPickedLetters([])
+        setWordColor("#000000")
+        setGameImg("./assets/forca0.png")
     }
 
     return (
@@ -50,7 +54,7 @@ const Jogo = ({
             </LeftContainer>
             <RightContainer>
                 <StartButton onClick={() => startGame()}>Escolher Palavra</StartButton>
-                <WordContainer>
+                <WordContainer style={{color: wordColor}}>
                     {underlineWord}
                 </WordContainer>
             </RightContainer>
