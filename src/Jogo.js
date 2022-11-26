@@ -1,66 +1,56 @@
-import styled from "styled-components";
+import { GameContainer, LeftContainer, RightContainer, StartButton, WordContainer } from "./JogoStyledComp";
 
-const GameContainer = styled.section`
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    height: 500px;
-    margin-top: 40px
-`
+const Jogo = ({
+    palavras,
+    setGameWord,
+    setUnderlineWord,
+    setIsDisabled,
+    underlineWord,
+    gameImg,
+    setGameImg,
+}) => {
 
-const LeftContainer = styled.div`
-    width: 400px;
-    height: 470px;
-
-    img {
-        width: 100%;
-        height: 100%;
+    //Auxiliary Functions - Start
+    function upperCase(string) {
+        return string.toUpperCase()
     }
-`
 
-const RightContainer = styled.div`
-    width: 400px;
-    heigh: 470px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-`
+    function pickRandomString(arr) {
+        return arr[Math.floor(Math.random() * arr.length)]
+    }
 
-const StartButton = styled.button`
-   width: 200px;
-   height: 60px;
-   border-radius: 8px;
-   border: none;
-   background-color: #27AE60;
-   font-size: 20px;
-   font-weight: 700;
-   text-align: center;
-   color: #FFFFFF;
-   margin: 0 auto;
-   cursor: pointer;
-`
+    function stringToArray(string) {
+        return [...string]
+    }
 
-const WordContainer = styled.p`
-    width: 100%;
-    height: 70px;
-    font-size: 50px;
-    font-weight: 700;
-    text-align: center
-    letter-spacing: 20px;
-`
+    function wordToUnderline(arr) {
+        return arr.map(() => "_")
+    }
+    //Auxiliary Functions - End
 
-export default function RunGame({palavra, forca, startGame}) {
+    function startGame() {        
+        const randomWord = upperCase(pickRandomString(palavras))
+        const wordArr = stringToArray(randomWord)
+        console.log(wordArr)
+        const blankArray = wordToUnderline(wordArr)
+        setGameWord(wordArr)
+        setUnderlineWord(blankArray)
+        setIsDisabled(false)
+    }
+
     return (
         <GameContainer>
             <LeftContainer>
-                <img src={forca}/>
+                <img src={gameImg} />
             </LeftContainer>
             <RightContainer>
-                <StartButton onClick={startGame}>Escolher Palavra</StartButton>
+                <StartButton onClick={() => startGame()}>Escolher Palavra</StartButton>
                 <WordContainer>
-                    {palavra}
+                    {underlineWord}
                 </WordContainer>
             </RightContainer>
         </GameContainer>
     )
 }
+
+export default Jogo
