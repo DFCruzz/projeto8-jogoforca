@@ -1,29 +1,36 @@
 import { isDisabled } from "@testing-library/user-event/dist/utils"
 import { LetterBox } from "./LetterBox"
 import { LetterContainer } from "./LetterContainer"
+import forca1 from "./assets/forca1.png"
+import forca2 from "./assets/forca2.png"
+import forca3 from "./assets/forca3.png"
+import forca4 from "./assets/forca4.png"
+import forca5 from "./assets/forca5.png"
+import forca6 from "./assets/forca6.png"
+
 
 const Letters = ({
-    newAlfabeto,
-    isDisabled,
-    pickedLetters,
-    setPickedLetters,
-    gameWord,
-    underlineWord,
-    setUnderlineWord,
     errorCount,
+    gameWord,
+    isDisabled,
+    newAlfabeto,
+    pickedLetters,
     setErrorCount,
     setGameImg,
     setIsDisabled,
+    setPickedLetters,
+    setUnderlineWord,
     setWordColor,
+    underlineWord,
 }) => {
 
     function checkRightOrWrong(e) {
         let pickedWord = gameWord
-        
 
-        if(pickedWord.includes(e)) {
+
+        if (pickedWord.includes(e)) {
             pickedWord.map((a, index) => {
-                if(a.normalize('NFD').replace(/[\u0300-\u036f]/g, "") === e) {
+                if (a.normalize('NFD').replace(/[\u0300-\u036f]/g, "") === e) {
                     fillBlankArray(a, index)
                     endGame()
                 }
@@ -38,37 +45,36 @@ const Letters = ({
     }
 
     function fillBlankArray(e, index) {
-       let blankPickedWord = underlineWord
-       blankPickedWord[index] = e
-       setUnderlineWord(blankPickedWord)
+        let blankPickedWord = underlineWord
+        blankPickedWord[index] = e
+        setUnderlineWord(blankPickedWord)
 
     }
 
     function endGame(e) {
-        if(!underlineWord.includes("_")) {
+        if (!underlineWord.includes("_")) {
             setIsDisabled(true)
             setWordColor("#27AE60")
         }
 
         else {
-            if(e === 1) {
-                setGameImg("./assets/forca1.png")
+            if (e === 1) {
+                setGameImg(forca1)
             }
-            else if(e === 2) {
-                setGameImg("./assets/forca2.png")
+            else if (e === 2) {
+                setGameImg(forca2)
             }
-            else if(e === 3) {
-                setGameImg("./assets/forca3.png")
+            else if (e === 3) {
+                setGameImg(forca3)
             }
-            else if(e === 4) {
-                setGameImg("./assets/forca4.png")
+            else if (e === 4) {
+                setGameImg(forca4)
             }
-            else if(e === 5) {
-                setGameImg("./assets/forca5.png")
+            else if (e === 5) {
+                setGameImg(forca5)
             }
-            else if(e === 6) {
-                setGameImg("./assets/forca6.png")
-                console.log("Game Over Papito!")
+            else if (e === 6) {
+                setGameImg(forca6)
                 setIsDisabled(true)
                 setWordColor("#FF0000")
                 setUnderlineWord(gameWord)
@@ -85,7 +91,7 @@ const Letters = ({
     return (
         <LetterContainer>
             {newAlfabeto.map((a, index) =>
-                <LetterBox value={a} key={index} onClick={() => pickLetter(a)} disabled={isDisabled || pickedLetters.includes(a) ? "disable" : null }>
+                <LetterBox value={a} key={index} onClick={() => pickLetter(a)} disabled={isDisabled || pickedLetters.includes(a) ? "disable" : null}>
                     {a}
                 </LetterBox>)}
         </LetterContainer>

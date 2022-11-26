@@ -1,18 +1,18 @@
 import { GameContainer, LeftContainer, RightContainer, StartButton, WordContainer } from "./JogoStyledComp";
+import forca0 from "./assets/forca0.png"
 
 const Jogo = ({
-    palavras,
-    setGameWord,
-    gameWord,
-    setUnderlineWord,
-    setErrorCount,
-    setIsDisabled,
-    underlineWord,
     gameImg,
+    palavras,
+    setErrorCount,
     setGameImg,
+    setGameWord,
+    setIsDisabled,
     setPickedLetters,
-    wordColor,
+    setUnderlineWord,
     setWordColor,
+    underlineWord,
+    wordColor,
 }) => {
 
     //Auxiliary Functions - Start
@@ -33,7 +33,7 @@ const Jogo = ({
     }
     //Auxiliary Functions - End
 
-    function startGame() {        
+    function startGame() {
         const randomWord = upperCase(pickRandomString(palavras))
         const wordArr = stringToArray(randomWord)
         console.log(wordArr)
@@ -44,7 +44,7 @@ const Jogo = ({
         setIsDisabled(false)
         setPickedLetters([])
         setWordColor("#000000")
-        setGameImg("./assets/forca0.png")
+        setGameImg(forca0)
     }
 
     return (
@@ -54,7 +54,7 @@ const Jogo = ({
             </LeftContainer>
             <RightContainer>
                 <StartButton onClick={() => startGame()}>Escolher Palavra</StartButton>
-                <WordContainer style={{color: wordColor}}>
+                <WordContainer style={{ color: wordColor }}>
                     {underlineWord}
                 </WordContainer>
             </RightContainer>
