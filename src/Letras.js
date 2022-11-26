@@ -6,13 +6,43 @@ const Letters = ({
     newAlfabeto,
     isDisabled,
     pickedLetters,
-    setPickedLetters
+    setPickedLetters,
+    gameWord,
+    underlineWord,
+    setUnderlineWord,
+    errorCount,
+    setErrorCount,
 }) => {
 
+    function checkRightOrWrong(e) {
+        let pickedWord = gameWord
+        
+
+        if(pickedWord.includes(e)) {
+            pickedWord.map((a, index) => {
+                if(a.normalize("NFD").replace(/[^a-zA-Z\s]/g, "") === e) {
+                    fillBlankArray(a, index)
+                }
+            })
+        }
+        else {
+            let count = errorCount + 1
+            setErrorCount(count)
+            console.log(count)
+        }
+    }
+
+    function fillBlankArray(e, index) {
+       let blankPickedWord = underlineWord
+       blankPickedWord[index] = e
+       setUnderlineWord(blankPickedWord)
+
+    }
+
     function pickLetter(event) {
-        console.log("Foi o clique")
         console.log(event)
         setPickedLetters([...pickedLetters, event])
+        checkRightOrWrong(event)
     }
 
     return (

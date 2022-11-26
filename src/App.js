@@ -1,5 +1,4 @@
 import { useState } from "react"
-import styled from "styled-components"
 import Jogo from "./Jogo"
 import Letters from "./Letras"
 import Chute from "./Chute"
@@ -15,6 +14,7 @@ export default function App() {
     const [gameWord, setGameWord] = useState([])
     const [underlineWord, setUnderlineWord] = useState([])
     const [pickedLetters, setPickedLetters] = useState([])
+    const [errorCount, setErrorCount] = useState(0)
 
 
     return (
@@ -26,12 +26,19 @@ export default function App() {
                 underlineWord={underlineWord}
                 gameImg={gameImg}
                 setGameWord={setGameWord}
+                setPickedLetters={setPickedLetters}
+                setErrorCount={setErrorCount}
             />
             <Letters
                 newAlfabeto={newAlfabeto}
                 isDisabled={isDisabled}
                 pickedLetters={pickedLetters}
                 setPickedLetters={setPickedLetters}
+                gameWord={gameWord}
+                setUnderlineWord={setUnderlineWord}
+                underlineWord={underlineWord}
+                setErrorCount={setErrorCount}
+                errorCount={errorCount}
             />
             <Chute disabled={isDisabled ? "disabled": null} />
         </>

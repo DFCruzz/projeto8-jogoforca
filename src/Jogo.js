@@ -3,11 +3,14 @@ import { GameContainer, LeftContainer, RightContainer, StartButton, WordContaine
 const Jogo = ({
     palavras,
     setGameWord,
+    gameWord,
     setUnderlineWord,
+    setErrorCount,
     setIsDisabled,
     underlineWord,
     gameImg,
     setGameImg,
+    setPickedLetters
 }) => {
 
     //Auxiliary Functions - Start
@@ -35,7 +38,9 @@ const Jogo = ({
         const blankArray = wordToUnderline(wordArr)
         setGameWord(wordArr)
         setUnderlineWord(blankArray)
+        setErrorCount(0)
         setIsDisabled(false)
+        setPickedLetters([])
     }
 
     return (
