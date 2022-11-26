@@ -24,28 +24,30 @@ export const RightContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+
+    button {
+        width: 200px;
+        height: 60px;
+        border-radius: 8px;
+        border: none;
+        background-color: #27AE60;
+        font-size: 20px;
+        font-weight: 700;
+        text-align: center;
+        color: #FFFFFF;
+        margin: 0 auto;
+        cursor: pointer;
+    }
+
+    p {
+        width: 100%;
+        height: 70px;
+        font-size: 50px;
+        font-weight: 700;
+        text-align: center;
+        letter-spacing: 20px; 
+    }
 `
 
-export const StartButton = styled.button`
-   width: 200px;
-   height: 60px;
-   border-radius: 8px;
-   border: none;
-   background-color: #27AE60;
-   font-size: 20px;
-   font-weight: 700;
-   text-align: center;
-   color: #FFFFFF;
-   margin: 0 auto;
-   cursor: pointer;
-`
 
-export const WordContainer = styled.p`
-    width: 100%;
-    height: 70px;
-    font-size: 50px;
-    font-weight: 700;
-    text-align: center;
-    letter-spacing: 20px;
-`
 

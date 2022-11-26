@@ -35,8 +35,8 @@ const Chute = ({
     return (
         <ChuteSection>
             <div>Já sei a palavra!</div>
-            <input disabled={isDisabled ? "disabled" : null} type="text" value={guessedWord} onChange={(e) => setGuessedWord(e.target.value)} />
-            <button onClick={guessWord} disabled={isDisabled ? "disabled" : null}>Chutar</button>
+            <input data-test="guess-input" disabled={isDisabled ? "disabled" : null} type="text" value={guessedWord} onChange={(e) => setGuessedWord(e.target.value)} />
+            <button data-test="guess-button" onClick={guessWord} disabled={isDisabled ? "disabled" : null}>Chutar</button>
         </ChuteSection>
     )
 }

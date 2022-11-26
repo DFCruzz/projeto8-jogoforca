@@ -1,8 +1,9 @@
-import { GameContainer, LeftContainer, RightContainer, StartButton, WordContainer } from "./JogoStyledComp";
+import { GameContainer, LeftContainer, RightContainer } from "./JogoStyledComp";
 import forca0 from "./assets/forca0.png"
 
 const Jogo = ({
     gameImg,
+    gameWord,
     palavras,
     setErrorCount,
     setGameImg,
@@ -50,13 +51,13 @@ const Jogo = ({
     return (
         <GameContainer>
             <LeftContainer>
-                <img src={gameImg} />
+                <img data-test="game-image" src={gameImg} />
             </LeftContainer>
             <RightContainer>
-                <StartButton onClick={() => startGame()}>Escolher Palavra</StartButton>
-                <WordContainer style={{ color: wordColor }}>
+                <button data-test="choose-word" onClick={() => startGame()}>Escolher Palavra</button>
+                <p data-test="word" data-answer={gameWord} style={{ color: wordColor }}>
                     {underlineWord}
-                </WordContainer>
+                </p>
             </RightContainer>
         </GameContainer>
     )

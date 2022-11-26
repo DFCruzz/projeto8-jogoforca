@@ -26,6 +26,7 @@ export default function App() {
             <GlobalStyle />
             <Jogo
                 gameImg={gameImg}
+                gameWord={gameWord}
                 palavras={palavras}
                 setErrorCount={setErrorCount}
                 setGameImg={setGameImg}

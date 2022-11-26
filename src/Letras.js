@@ -1,4 +1,3 @@
-import { isDisabled } from "@testing-library/user-event/dist/utils"
 import { LetterBox } from "./LetterBox"
 import { LetterContainer } from "./LetterContainer"
 import forca1 from "./assets/forca1.png"
@@ -91,7 +90,7 @@ const Letters = ({
     return (
         <LetterContainer>
             {newAlfabeto.map((a, index) =>
-                <LetterBox value={a} key={index} onClick={() => pickLetter(a)} disabled={isDisabled || pickedLetters.includes(a) ? "disable" : null}>
+                <LetterBox data-test="letter" value={a} key={index} onClick={() => pickLetter(a)} disabled={isDisabled || pickedLetters.includes(a) ? "disable" : null}>
                     {a}
                 </LetterBox>)}
         </LetterContainer>
